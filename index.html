@@ -2,47 +2,51 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Quarterly Earnings — Interactive RevealJS</title>
 
-  <!-- Reveal.js (CDN) -->
+  <!-- Reveal.js CSS -->
   <link rel="stylesheet" href="https://unpkg.com/reveal.js@4/dist/reveal.css">
   <link rel="stylesheet" href="https://unpkg.com/reveal.js@4/dist/theme/black.css" id="theme">
 
-  <!-- Highlight.js for code highlighting -->
+  <!-- Highlight.js -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
 
-  <!-- KaTeX for math rendering (used by Reveal's math plugin) -->
+  <!-- KaTeX -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
 
   <style>
-    /* small footer */
     .footer-email {
       position: fixed;
       right: 12px;
       bottom: 10px;
       font-size: 0.9rem;
-      opacity: 0.85;
+      opacity: 0.95;
+      background: rgba(255,255,255,0.02);
+      padding: 6px 8px;
+      border-radius: 6px;
     }
+    /* Make contact block stand out in small viewports */
+    .contact-block { font-weight: 600; }
   </style>
 </head>
 <body>
   <div class="reveal">
     <div class="slides">
 
-      <!-- Title slide -->
+      <!-- Title slide with explicit email -->
       <section>
         <h1>Quarterly Earnings Report — Q3</h1>
-        <p><strong>Contact: 23f3004065@ds.study.iitm.ac.in</strong></p>
-        <p class="fragment">Prepared for stakeholders</p>
-        <p class="fragment">Interactive visualization and notes</p>
-        <aside class="notes">Introduce yourself, summarise key metrics in one sentence. Mention that the full deck and data links are in the repo.</aside>
+        <p class="fragment">Prepared for: Stakeholders</p>
+        <p class="fragment contact-block">Contact email: 23f3004065@ds.study.iitm.ac.in</p>
+        <aside class="notes">
+          Introduce yourself. State the agenda and where stakeholders can find the data and repo.
+        </aside>
       </section>
 
-      <!-- Markdown slide (plugin) -->
+      <!-- Markdown slide -->
       <section data-markdown>
         <script type="text/template">
-
 ## Highlights (Markdown slide)
 
 - Revenue growth: **12%** (YoY)
@@ -51,10 +55,9 @@
   - Higher fee income
   - Cost optimisation
 
-> For detailed numbers, see the appendix.
-
+> Contact for follow-up: 23f3004065@ds.study.iitm.ac.in
         </script>
-        <aside class="notes">Read the bulleted highlights. Invite questions about drivers at the Q&A slide.</aside>
+        <aside class="notes">Read the bulleted highlights and call out the contact email at the end.</aside>
       </section>
 
       <!-- Fragment animations -->
@@ -65,61 +68,36 @@
           <li class="fragment">Lower operating expenses</li>
           <li class="fragment">Improved credit performance</li>
         </ul>
-        <aside class="notes">Reveal bullets one-by-one to keep focus. Provide one-sentence comments per fragment.</aside>
+        <aside class="notes">Reveal bullets one-by-one to keep focus.</aside>
       </section>
 
-      <!-- Code sample with syntax highlighting -->
+      <!-- Code sample -->
       <section>
-        <h2>Example: P&L Extraction Script (Python)</h2>
+        <h2>Example: P&L Aggregation (Python)</h2>
         <pre><code class="language-python">import pandas as pd
-
-# load P&L (example)
 df = pd.read_csv('pl.csv')
-# aggregate by segment
 summary = df.groupby('segment').agg({'revenue':'sum','expense':'sum'})
 summary['margin'] = (summary['revenue'] - summary['expense']) / summary['revenue']
-print(summary)
-</code></pre>
-        <aside class="notes">Explain that this snippet was used to aggregate segment P&L. Highlight margin calculation and data hygiene points.</aside>
+print(summary)</code></pre>
+        <aside class="notes">Explain the snippet and hygiene notes.</aside>
       </section>
 
       <!-- Math / financial formula -->
       <section>
         <h2>Financial Formula</h2>
         <p class="fragment">Return on Equity (ROE):</p>
-        <p class="fragment">\(\mathrm{ROE} = \dfrac{\mathrm{Net\ Income}}{\mathrm{Shareholders'\ Equity}}\)</p>
+        <p class="fragment">\\(\\displaystyle \\mathrm{ROE}=\\dfrac{\\mathrm{Net\\ Income}}{\\mathrm{Shareholders'\\ Equity}}\\)</p>
         <p class="fragment">DuPont decomposition:</p>
-        <p class="fragment">\(\mathrm{ROE} = \mathrm{Net\ Profit\ Margin} \times \mathrm{Asset\ Turnover} \times \mathrm{Equity\ Multiplier}\)</p>
-        <aside class="notes">Walk through each component and how management actions influence them.</aside>
+        <p class="fragment">\\(\\displaystyle \\mathrm{ROE}=\\mathrm{Net\\ Profit\\ Margin}\\times\\mathrm{Asset\\ Turnover}\\times\\mathrm{Equity\\ Multiplier}\\)</p>
+        <aside class="notes">Explain each DuPont term and what management can change.</aside>
       </section>
 
-      <!-- Slide with fragments and a small table -->
+      <!-- Contact slide: explicit plain text email -->
       <section>
-        <h2>Quarterly Trend</h2>
-        <p class="fragment">Revenue: <span class="fragment">₹5.2B</span></p>
-        <p class="fragment">Net Income: <span class="fragment">₹0.9B</span></p>
-        <table>
-          <thead>
-            <tr><th>Quarter</th><th class="fragment">Revenue</th><th class="fragment">Net Income</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Q1</td><td class="fragment">4.6B</td><td class="fragment">0.7B</td></tr>
-            <tr><td>Q2</td><td class="fragment">5.0B</td><td class="fragment">0.8B</td></tr>
-            <tr><td>Q3</td><td class="fragment">5.2B</td><td class="fragment">0.9B</td></tr>
-          </tbody>
-        </table>
-        <aside class="notes">Use the fragments to reveal numbers progressively. Emphasize YoY and sequential growth.</aside>
-      </section>
-
-      <!-- Appendix / resources -->
-      <section>
-        <h2>Appendix & Resources</h2>
-        <ul>
-          <li class="fragment">Detailed P&L workbook (repo)</li>
-          <li class="fragment">Data dictionary</li>
-          <li class="fragment">Contact: <strong>23f3004065@ds.study.iitm.ac.in</strong></li>
-        </ul>
-        <aside class="notes">Point stakeholders to the repo for downloads and reproducibility. Provide the contact email for follow-up.</aside>
+        <h2>Contact & Repo</h2>
+        <p>This presentation was prepared by: <strong>23f3004065@ds.study.iitm.ac.in</strong></p>
+        <p>Repository README also contains the contact email for grader verification.</p>
+        <aside class="notes">Direct stakeholders to the repo and mention how to request the data extract.</aside>
       </section>
 
     </div>
@@ -127,14 +105,15 @@ print(summary)
 
   <div class="footer-email">Contact: 23f3004065@ds.study.iitm.ac.in</div>
 
-  <!-- Reveal.js and plugins -->
-  <script src="https://unpkg.com/reveal.js@4/dist/reveal.js"></script>
-  <script src="https://unpkg.com/reveal.js@4/plugin/markdown/markdown.esm.js" type="module"></script>
-  <script src="https://unpkg.com/reveal.js@4/plugin/highlight/highlight.esm.js" type="module"></script>
-  <script src="https://unpkg.com/reveal.js@4/plugin/math/math.esm.js" type="module"></script>
+  <!-- Reveal and plugins -->
+  <script type="module" src="https://unpkg.com/reveal.js@4/dist/reveal.esm.js"></script>
+  <script type="module" src="https://unpkg.com/reveal.js@4/plugin/markdown/markdown.esm.js"></script>
+  <script type="module" src="https://unpkg.com/reveal.js@4/plugin/highlight/highlight.esm.js"></script>
+  <script type="module" src="https://unpkg.com/reveal.js@4/plugin/math/math.esm.js"></script>
 
-  <!-- Highlight.js (for fallback) -->
+  <!-- highlight.js fallback -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
 
   <script type="module">
     import Reveal from 'https://unpkg.com/reveal.js@4/dist/reveal.esm.js';
@@ -148,12 +127,7 @@ print(summary)
     });
     deck.initialize();
 
-    // Optional: ensure highlight.js runs on non-module clients
     if (window.hljs) window.hljs.highlightAll();
   </script>
-
-  <!-- KaTeX (used by the math plugin) -->
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-
 </body>
 </html>
